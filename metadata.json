@@ -1,0 +1,6 @@
+{
+  "name": "Festival IncluARTE",
+  "description": "Festival IncluARTE",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

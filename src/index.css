@@ -1,0 +1,256 @@
+@import "tailwindcss";
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+    min-height: 100dvh;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #020617;
+    color: #f8fafc;
+    overflow: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  }
+
+  button, [role="button"] {
+    touch-action: manipulation;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom discreet scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.6);
+}
+
+/* Keyframe animations for cinematics and hotspot glows */
+@keyframes map-breathe {
+  0%, 100% {
+    transform: scale(1.002) translateY(0px);
+  }
+  50% {
+    transform: scale(1.022) translateY(-2px);
+  }
+}
+
+/* Cinematic Ken-Burns subtle living zoom for interior scenes */
+@keyframes ken-burns {
+  0% {
+    transform: scale(1.04) translate3d(0%, 0%, 0);
+  }
+  33% {
+    transform: scale(1.09) translate3d(-1%, -0.8%, 0);
+  }
+  66% {
+    transform: scale(1.06) translate3d(1%, -0.4%, 0);
+  }
+  100% {
+    transform: scale(1.04) translate3d(0%, 0%, 0);
+  }
+}
+
+/* Living breathing ambient light sheen */
+@keyframes ambient-glow {
+  0%, 100% {
+    opacity: 0.18;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.38;
+    transform: scale(1.12);
+  }
+}
+
+/* Floating festival dust / ambient light particles */
+@keyframes particle-drift {
+  0% {
+    transform: translateY(0px) translateX(0px) scale(0.8);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.8;
+  }
+  75% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-90px) translateX(18px) scale(1.15);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.95;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes ripple-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Stage Lighting Spotlights */
+@keyframes stage-beam-left {
+  0%, 100% {
+    transform: rotate(-18deg);
+    opacity: 0.35;
+  }
+  50% {
+    transform: rotate(14deg);
+    opacity: 0.65;
+  }
+}
+
+@keyframes stage-beam-right {
+  0%, 100% {
+    transform: rotate(18deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: rotate(-12deg);
+    opacity: 0.35;
+  }
+}
+
+/* Haptic soundwave ripples for CONVIBRA */
+@keyframes haptic-wave {
+  0% {
+    r: 12;
+    opacity: 0.9;
+    stroke-width: 3.5;
+  }
+  100% {
+    r: 58;
+    opacity: 0;
+    stroke-width: 1;
+  }
+}
+
+/* Burger grill steam */
+@keyframes steam-rise {
+  0% {
+    transform: translateY(0px) scale(0.8);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-24px) scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Floating festival sparkles / confetti */
+@keyframes sparkle-float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(-28px) rotate(180deg);
+    opacity: 0.1;
+  }
+}
+
+.animate-map-breathe {
+  animation: map-breathe 8s ease-in-out infinite;
+}
+
+.animate-ken-burns {
+  animation: ken-burns 26s ease-in-out infinite;
+}
+
+.animate-ambient-glow {
+  animation: ambient-glow 7s ease-in-out infinite;
+}
+
+.animate-particle-drift {
+  animation: particle-drift 6.5s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2.2s ease-in-out infinite;
+}
+
+.animate-ripple {
+  animation: ripple-ring 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.animate-float {
+  animation: float-gentle 3.5s ease-in-out infinite;
+}
+
+.animate-stage-left {
+  animation: stage-beam-left 4.8s ease-in-out infinite;
+  transform-origin: 0% 0%;
+}
+
+.animate-stage-right {
+  animation: stage-beam-right 5.2s ease-in-out infinite;
+  transform-origin: 100% 0%;
+}
+
+.animate-haptic {
+  animation: haptic-wave 2.2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.animate-steam {
+  animation: steam-rise 2.6s ease-out infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle-float 5s ease-in-out infinite;
+}
